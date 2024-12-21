@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
 import Link from "next/link";
+import {bgGreen} from "next/dist/lib/picocolors";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,23 +29,26 @@ export default function RootLayout({
       <ClerkProvider>
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-800`}
       >
       <header>
-        <div>
-          <Link href="/">HomePage_________________</Link>
-          <Link href="/record">Voice to text</Link>
+        <div className="text-white text-3xl bg-gray-800 flex justify-between items-center px-6 py-4">
+          <div className="flex space-x-4">
+            <Link href="/" className="hover:text-gray-300 underline duration-200">HomePage</Link>
+            <Link href="/record" className="hover:text-gray-300 underline duration-200">Voice to text</Link>
+          </div>
+          <div className="bg-green-600 px-4 py-2 rounded-lg">
+            <SignedOut>
+              <SignInButton/>
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
         </div>
-        <div>
-          <SignedOut>
-            <SignInButton/>
-          </SignedOut>
-          <SignedIn>
-            <UserButton showName/>
-          </SignedIn>
-        </div>
+
       </header>
-        {children}
+      {children}
       </body>
     </html>
       </ClerkProvider>
