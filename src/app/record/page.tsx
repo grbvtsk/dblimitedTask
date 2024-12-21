@@ -1,5 +1,5 @@
 "use client"
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import FileUploader from "@/app/components/FileUploader";
 import TranscriptionDisplay from "@/app/components/TranscriptionDisplay"

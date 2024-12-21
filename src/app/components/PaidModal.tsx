@@ -5,7 +5,7 @@ const PaidModal = ({ isVisible,setPopupVisible, onClose,setIsPaid }) => {
 
     const handlePayment = async()=> {
         await axios.post("/api/users/status", { isPaid: true })
-        const show = await axios.get("/api/users/status")
+        await axios.get("/api/users/status")
         setIsPaid(true)
         alert("Payment Successful!")
         setPopupVisible(false)

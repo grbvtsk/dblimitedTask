@@ -3,7 +3,7 @@ import {currentUser} from "@clerk/nextjs/server";
 import UserSchema from "@/app/models/user";
 import Transcription from "@/app/models/transcription";
 
-export async function GET(req) {
+export async function GET() {
     try {
         await connectMongo();
         const user = await currentUser();
@@ -22,7 +22,7 @@ export async function GET(req) {
 
 
     } catch (error) {
-        return new Response(JSON.stringify({ error: 'Failed to fetch payment status' }), { status: 500 });
+        return new Response(JSON.stringify({ error: error }), { status: 500 });
     }
 }
 
@@ -54,6 +54,6 @@ export async function POST(req) {
 
         return new Response(JSON.stringify({ message: 'User paid successfully', user: newUser }), { status: 201 });
     } catch (error) {
-        return new Response(JSON.stringify({ error: 'Failed to create user' }), { status: 500 });
+        return new Response(JSON.stringify({ error: error }), { status: 500 });
     }
 }

@@ -2,7 +2,7 @@ import connectMongo from '../db/connect';
 import Transcription from "@/app/models/transcription";
 import {currentUser} from "@clerk/nextjs/server";
 
-export async function GET(req) {
+export async function GET() {
     try {
         await connectMongo();
         const user = await currentUser()
@@ -15,7 +15,7 @@ export async function GET(req) {
         const transcriptions = await Transcription.find({ userName });
         return new Response(JSON.stringify(transcriptions), { status: 200 });
     } catch (error) {
-        return new Response(JSON.stringify({ error: 'Failed to fetch data' }), { status: 500 });
+        return new Response(JSON.stringify({ error: error }), { status: 500 });
     }
 }
 

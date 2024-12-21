@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
 import Link from "next/link";
-import {bgGreen} from "next/dist/lib/picocolors";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

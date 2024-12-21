@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React, {useEffect} from "react";
 import axios from "axios";
 import {StoryProps} from "@/interfaces/stories.interfaces";
 
@@ -23,7 +23,7 @@ const Story: React.FC<StoryProps>  = ({story,setStory})=>{
         <div>
             <h2 className="text-xl font-semibold mb-4">Story of Transcriptions</h2>
             <div className="space-y-4">
-                {story.map((el, index) => (
+                {story.map((el) => (
                     <div
                         key={el._id}
                         className="relative p-3 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700 duration-300"
